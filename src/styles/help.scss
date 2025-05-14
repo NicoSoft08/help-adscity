@@ -1,0 +1,429 @@
+@import './fonts';
+@import './variables';
+
+
+// Variables
+$transition: all 0.3s ease;
+
+
+
+// Base styles
+.help-layout {
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    color: #202124;
+    font-family: 'Roboto', 'Segoe UI', sans-serif;
+
+
+}
+
+// Header
+.help-header {
+    background-color: $white;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+
+    .container {
+        // width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 16px;
+    }
+
+    .header-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 64px;
+
+        .back-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: $secondary-color;
+            padding: 8px;
+            margin-right: 8px;
+            border-radius: 50%;
+            transition: $transition;
+
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.05);
+            }
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            cursor: pointer;
+
+            img {
+                height: 32px;
+                margin-right: 12px;
+            }
+
+            h1 {
+                font-size: 18px;
+                font-weight: 500;
+                margin: 0;
+
+                // @include responsive(md) {
+                //     font-size: 20px;
+                // }
+            }
+        }
+
+        .search-container {
+            position: relative;
+
+            &.active {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 64px;
+                background-color: $white;
+                z-index: 101;
+                padding: 0 16px;
+
+                form {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    height: 100%;
+
+                    input {
+                        flex: 1;
+                        height: 40px;
+                        border: none;
+                        font-size: 16px;
+                        font-family: 'Ubuntu', sans-serif;
+                        font-weight: $font-light;
+                        outline: none;
+                        padding: 0 16px;
+                    }
+
+                    .close-search {
+                        background: none;
+                        border: none;
+                        cursor: pointer;
+                        color: $dark;
+                        padding: 8px;
+                        border-radius: 50%;
+
+                        &:hover {
+                            background-color: rgba(0, 0, 0, 0.05);
+                        }
+                    }
+                }
+            }
+
+            .search-icon {
+                background: none;
+                border: none;
+                cursor: pointer;
+                color: $dark;
+                padding: 8px;
+                border-radius: 50%;
+                transition: $transition;
+
+                &:hover {
+                    background-color: rgba(0, 0, 0, 0.05);
+                }
+            }
+        }
+    }
+}
+
+// Main content
+.help-main {
+    padding: 24px 0 48px;
+
+    // Hero section
+    .help-hero {
+        text-align: center;
+        padding: 48px 0;
+        font-family: 'Ubuntu', sans-serif;
+
+        h1 {
+            font-size: 28px;
+            font-weight: 500;
+            margin-bottom: 16px;
+
+            @media (max-width: 600px) {
+                font-size: 24px;
+            }
+
+            @media (max-width: 400px) {
+                font-size: 20px;
+            }
+        }
+
+        p {
+            font-size: 16px;
+            color: #5f6368;
+            margin-bottom: 32px;
+
+            @media (max-width: 600px) {
+                font-size: 14px;
+            }
+            @media (max-width: 400px) {
+                font-size: 12px;
+            }
+        }
+
+        .hero-search-form {
+            max-width: 600px;
+            margin: 0 auto;
+
+            .search-input-container {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                background-color: $white;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                padding: 0 16px;
+                margin-bottom: 16px;
+
+                svg {
+                    color: $dark;
+                    margin-right: 12px;
+                }
+
+                input {
+                    flex: 1;
+                    height: 48px;
+                    border: none;
+                    font-size: 16px;
+                    outline: none;
+                    font-family: 'Ubuntu', sans-serif;
+                    font-weight: $font-light;
+                }
+            }
+
+            .search-button {
+                width: 100%;
+                height: 48px;
+                background-color: $two;
+                color: $white;
+                border: none;
+                border-radius: 8px;
+                font-size: 16px;
+                font-weight: 500;
+                cursor: pointer;
+                transition: $transition;
+                font-family: 'Ubuntu', sans-serif;
+
+
+                &:hover {
+                    background-color: darken($two, 5%);
+                }
+            }
+        }
+    }
+
+    // Categories section
+    .help-categories {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 24px;
+        margin-bottom: 48px;
+
+
+        @media (min-width: 600px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (min-width: 900px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media (min-width: 1200px) {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+
+        .help-card {
+            background-color: $white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 24px;
+            text-decoration: none;
+            color: #202124;
+            transition: $transition;
+            font-family: 'Ubuntu', sans-serif;
+            font-weight: $font-light;
+
+            &:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            .icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 64px;
+                height: 64px;
+                background-color: #e8f0fe;
+                border-radius: 50%;
+                margin-bottom: 16px;
+                color: $two;
+            }
+
+            .content {
+                h3 {
+                    font-size: 18px;
+                    font-weight: 500;
+                    margin-bottom: 8px;
+                }
+
+                p {
+                    font-size: 14px;
+                    color: #5f6368;
+                    line-height: 1.5;
+                }
+            }
+        }
+    }
+}
+
+
+.faq-page {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    max-width: 600px;
+    margin: 0 auto;
+
+
+    .faq-intro {
+        text-align: center;
+        margin-bottom: 20px;
+        padding: 10px;
+
+
+        h1 {
+            font-size: 18px;
+            color: $dark;
+            font-weight: $font-medium;
+            font-family: 'Ubuntu', sans-serif;
+        }
+
+        p {
+            color: $dark;
+            font-weight: $font-light;
+            font-family: 'Ubuntu', sans-serif;
+        }
+    }
+
+
+    .faq-category {
+        margin-bottom: 20px;
+        padding: 10px;
+
+
+        h2 {
+            font-size: 18px;
+            // padding: 5px 10px;
+            color: $dark;
+            font-weight: $font-medium;
+            font-family: 'Ubuntu', sans-serif;
+        }
+
+
+        .faq-item {
+            margin-bottom: 10px;
+            padding: 10px;
+
+
+            h3 {
+                font-size: 16px;
+                // padding: 5px 10px;
+                cursor: pointer;
+                color: $dark;
+                font-weight: $font-regular;
+                font-family: 'Ubuntu', sans-serif;
+            }
+
+            p {
+                display: none;
+                // padding: 5px 10px;
+                text-align: justify;
+                background-color: #f9f9f9;
+                font-family: 'Ubuntu', sans-serif;
+                font-weight: $font-light;
+            }
+
+            ol {
+                display: none;
+                // list-style-type: none;
+
+                li {
+                    font-weight: $font-light;
+                }
+            }
+
+            ul {
+                display: none;
+                list-style-type: none;
+
+                li {
+                    font-weight: $font-light;
+                }
+            }
+
+
+            .faq-btn-text {
+                width: 100px;
+                height: 20px;
+            }
+
+            .faq-btn-register {
+                width: 120px;
+                height: 20px;
+            }
+
+            .faq-btn {
+                /* width: 90px; */
+                height: 20px;
+            }
+        }
+
+        .faq-item.active {
+            background-color: #f9f9f9;
+
+            p,
+            ol,
+            ul {
+                display: block;
+            }
+        }
+    }
+
+    .faq-contact {
+        padding: 10px;
+
+
+        h2 {
+            font-size: 18px;
+            // padding: 5px 10px;
+            color: $dark;
+            font-weight: $font-medium;
+            font-family: 'Ubuntu', sans-serif;
+        }
+
+        p {
+            font-family: 'Ubuntu', sans-serif;
+            font-weight: $font-light;
+            text-align: justify;
+        }
+    }
+}
